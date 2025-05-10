@@ -2,6 +2,7 @@ import { IncomingMessage, ServerResponse } from 'http';
 import { parseRequest, sendResponse } from './utils';
 import { get } from './get';
 import { post } from './post';
+import { put } from './put';
 
 export const router = (req: IncomingMessage, res: ServerResponse) => {
   if (!req.url || req.url === '/favicon.ico') {
@@ -28,10 +29,11 @@ export const router = (req: IncomingMessage, res: ServerResponse) => {
       post(req, res);
       break;
 
-    case 'PUT ':
+    case 'PUT':
+      put(ParsedRequest.id, req, res);
       break;
 
-    case 'DELETE ':
+    case 'DELETE':
       break;
 
     default:
