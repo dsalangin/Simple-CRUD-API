@@ -6,7 +6,9 @@ import { db } from './db';
 export const get = (id: string | undefined, res: ServerResponse) => {
   if (!id) {
     const users = getAllUsers();
-    sendResponse(res, 200, JSON.stringify(users));
+    sendResponse(res, 200, JSON.stringify(users), {
+      'Content-Type': 'application/json',
+    });
     return;
   }
 
@@ -32,7 +34,9 @@ export const get = (id: string | undefined, res: ServerResponse) => {
     return;
   }
 
-  sendResponse(res, 200, JSON.stringify(user));
+  sendResponse(res, 200, JSON.stringify(user), {
+    'Content-Type': 'application/json',
+  });
 };
 
 const getAllUsers = () => {

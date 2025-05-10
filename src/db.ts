@@ -6,8 +6,11 @@ db.set('ffc0eaf9-0a05-4ba6-9bda-a83963a49a98', {
   hobbies: [],
 });
 
-type User = {
+export type User = UserData & {
   id: string;
+};
+
+type UserData = {
   username: string;
   age: number;
   hobbies: string[];

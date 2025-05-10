@@ -1,8 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import { parseRequest, sendResponse } from './utils';
 import { get } from './get';
-
-const { log } = console;
+import { post } from './post';
 
 export const router = (req: IncomingMessage, res: ServerResponse) => {
   if (!req.url || req.url === '/favicon.ico') {
@@ -25,7 +24,8 @@ export const router = (req: IncomingMessage, res: ServerResponse) => {
       get(ParsedRequest.id, res);
       break;
 
-    case 'POST ':
+    case 'POST':
+      post(req, res);
       break;
 
     case 'PUT ':
