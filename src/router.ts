@@ -1,5 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'http';
-import { parseRequest } from './utils';
+import { parseRequest, sendResponse } from './utils';
+import { get } from './get';
 
 const { log } = console;
 
@@ -9,19 +10,19 @@ export const router = (req: IncomingMessage, res: ServerResponse) => {
   }
 
   if (!req.url.startsWith('/api/users')) {
-    res.statusCode = 404;
-    res.end('Bad request');
+    sendResponse(res, 404, 'Bad request');
     return;
   }
 
-  const reqObj = parseRequest(req);
+  const ParsedRequest = parseRequest(req);
 
-  if (!reqObj) {
+  if (!ParsedRequest) {
     return;
   }
 
-  switch (reqObj.method) {
+  switch (ParsedRequest.method) {
     case 'GET':
+      get(ParsedRequest.id, res);
       break;
 
     case 'POST ':
@@ -36,6 +37,4 @@ export const router = (req: IncomingMessage, res: ServerResponse) => {
     default:
       break;
   }
-  log(req.url.startsWith('/api/users'));
-  res.end('Success');
 };

@@ -1,4 +1,10 @@
-import { IncomingMessage } from 'http';
+import { IncomingMessage, ServerResponse } from 'http';
+
+export type ParsedRequest = {
+  method: string;
+  entity: string | undefined;
+  id: string | undefined;
+};
 
 export const parseRequest = (req: IncomingMessage) => {
   const { url, method } = req;
@@ -14,4 +20,13 @@ export const parseRequest = (req: IncomingMessage) => {
     entity,
     id,
   };
+};
+
+export const sendResponse = (
+  res: ServerResponse,
+  statusCode: number,
+  content: string,
+) => {
+  res.statusCode = statusCode;
+  res.end(content);
 };
