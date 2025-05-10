@@ -1,16 +1,14 @@
 import { createServer } from 'http';
 import 'dotenv/config';
+import { router } from './router';
 
 const { log } = console;
 
 const port = process.env.PORT || 3000;
 
-log(process.env.PORT);
-
 export const init = () => {
   const server = createServer(async (req, res) => {
-    log(req);
-    res.end('Success');
+    router(req, res);
   });
 
   server.listen(port, () => {
