@@ -12,6 +12,6 @@ export const init = () => {
   });
 
   server.listen(port, () => {
-    log(`http://localhost:${port}`);
+    log(`Server running: http://localhost:${port}`);
   });
 };
