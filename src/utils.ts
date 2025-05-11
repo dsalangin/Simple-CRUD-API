@@ -16,7 +16,7 @@ export const parseRequest = (req: IncomingMessage) => {
   const [, entity, id] = url.replace(/^\//, '').split('/');
 
   return {
-    method: method || 'GET',
+    method,
     entity,
     id,
   };
