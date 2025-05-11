@@ -1,4 +1,4 @@
-import { dirname } from 'path';
+import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
 const config = {
@@ -6,7 +6,7 @@ const config = {
   target: 'node',
   mode: 'production',
   output: {
-    path: path.resolve(dirname(fileURLToPath(import.meta.url)), 'dist'),
+    path: resolve(dirname(fileURLToPath(import.meta.url)), 'dist'),
     filename: 'index.js',
     libraryTarget: 'module',
   },
