@@ -53,3 +53,5 @@ export const parseBody = (req: IncomingMessage) => {
     req.on('error', reject);
   });
 };
+
+export const getDefaultPort = () => 3000;
